@@ -1,13 +1,13 @@
 import sys
 import unittest
-import logging
 import Students
 import atexit
 
 def exit_handler(): # pragma: no cover
     output = "".join(sys.stdout.buffer)
     sys.stdout = sys.__stdout__
-    print(output)
+    print('', file=sys.stderr, flush=True)
+    print(output, flush=True)
 
 atexit.register(exit_handler)
 
@@ -44,12 +44,17 @@ class Test(unittest.TestCase):
     # test case function to check the Students.get_name function
     def test_1_get_name(self):
         #TODO
-        print('\nStart set_name test\n')
+        print('\nStart get_name test\n')
+        print(f'user_id length =  {len(self.user_ids)}')
+        print(f'user_name length =  {len(self.user_names)}\n')
+
 
         for user_id in self.user_ids:
             user_name = self.students.get_name(user_id)
             self.assertEqual(user_name, self.user_names[user_id])
             print(f'id {user_id} : {user_name}')
+        
         self.assertEqual(self.students.get_name(len(self.user_ids)), 'There is no such user')
+        print(f'id {len(self.user_ids)} : There is no such user')
 
-        print('\nFinish set_name list')
+        print('\nFinish get_name list')
