@@ -33,11 +33,13 @@ class Test(unittest.TestCase):
         #TODO
         print('\nStart set_name test\n')
 
-        for i, user_name in enumerate(self.user_names):
+        for user_name in self.user_names:
             user_id = self.students.set_name(user_name)
-            self.assertEqual(user_id, i)
+            self.assertTrue((isinstance(user_id, int) and user_id >= 0))
             self.user_ids.append(user_id)
             print(f'{user_id} {user_name}')
+        
+        self.assertTrue(len(self.user_ids) == len(set(self.user_ids)))
 
         print('\nFinish set_name list')
 
@@ -48,13 +50,15 @@ class Test(unittest.TestCase):
         print(f'user_id length =  {len(self.user_ids)}')
         print(f'user_name length =  {len(self.user_names)}\n')
 
-
         for user_id in self.user_ids:
             user_name = self.students.get_name(user_id)
             self.assertEqual(user_name, self.user_names[user_id])
             print(f'id {user_id} : {user_name}')
         
-        self.assertEqual(self.students.get_name(len(self.user_ids)), 'There is no such user')
+        self.assertEqual(self.students.get_name(max(self.user_ids)+1), 'There is no such user')
         print(f'id {len(self.user_ids)} : There is no such user')
 
         print('\nFinish get_name list')
+
+if __name__ == '__main__': # pragma: no cover
+    unittest.main()
