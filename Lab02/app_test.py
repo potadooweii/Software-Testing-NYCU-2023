@@ -31,6 +31,7 @@ class ApplicationTest(unittest.TestCase):
         self.app.notify_selected()
         self.assertEqual(mock_write.call_count, len(self.app.selected))
         self.assertEqual(mock_send.call_count, len(self.app.selected))
+        print(f'\n\n{mock_write.mock_calls}\n{mock_send.mock_calls}')
 
 
 if __name__ == "__main__":
