@@ -30,4 +30,4 @@ jobs:
       run: |
         cd Lab03
         python3 -m unittest calculator_test.py -v
-        flask8 calculator_test.py
+        flake8 calculator_test.py
