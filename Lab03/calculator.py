@@ -2,7 +2,6 @@ import math
 
 
 class Calculator:
-
     @staticmethod
     def divide(x, y):
         return x / y
@@ -20,6 +19,6 @@ class Calculator:
         return math.exp(x)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Calculator.add(1, '2')
     Calculator.divide(1, 0)
