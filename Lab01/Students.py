@@ -7,12 +7,12 @@ class Students:
 
     def get_name(self, user_id):
         if user_id >= len(self.name):
-            return 'There is no such user'
+            return "There is no such user"
         else:
             return self.name[user_id]
 
 
-if __name__ == '__main__': # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     students = Students()
-    print("id", students.set_name('John'))
+    print("id", students.set_name("John"))
     print("name", students.get_name(0))
