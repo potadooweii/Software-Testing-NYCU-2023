@@ -27,6 +27,6 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with unittest 
       run: |
-        cd Lab03
+        cd Lab04
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        python3 -m lab4.py
+        python3 lab04.py
