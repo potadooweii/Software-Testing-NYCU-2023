@@ -27,8 +27,7 @@ driver.maximize_window()
 # click 新聞
 news_href = WebDriverWait(driver, TIMEOUT).until(
     lambda d: d.find_element(By.XPATH, '//*[@id="menu-1-9942884"]/li[2]/a')
-)
-driver.get(news_href.get_attribute("href"))
+).click()
 
 # click first news
 first_news_id = WebDriverWait(driver, TIMEOUT).until(
@@ -65,7 +64,7 @@ search_input.send_keys(Keys.ENTER)
 
 # print the title of second result
 search_results = WebDriverWait(driver, TIMEOUT).until(
-    lambda d: d.find_element(By.XPATH, '//*[@id="rso"]/div[3]/div/div/div[1]/div/a/h3')
+    lambda d: d.find_element(By.XPATH, '//*[@id="rso"]/div[2]/div/div/div[1]/div/a/h3')
 )
 print(search_results.text)
 
