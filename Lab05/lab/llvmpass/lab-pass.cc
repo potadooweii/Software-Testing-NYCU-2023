@@ -14,16 +14,9 @@
 #include "llvm/IR/IRBuilder.h"
 #include "llvm/IR/Constants.h"
 #include "llvm/IR/GlobalVariable.h"
-
-
-#include <sstream> 
-#include <string>
-
 using namespace llvm;
 
 char LabPass::ID = 0;
-int depth = 0;
-
 static FunctionCallee printfPrototype(Module &M);
 static Constant* getI8StrVal(Module &M, char const *str, Twine const &name);
 
@@ -33,29 +26,18 @@ bool LabPass::doInitialization(Module &M) {
 
 bool LabPass::runOnModule(Module &M) {
   errs() << "runOnModule\n";
-
   LLVMContext &ctx = M.getContext();
-
   FunctionCallee printfCallee = printfPrototype(M);
-
+  
   IRBuilder<> BuilderInit(ctx);
   GlobalVariable *depth = new GlobalVariable(M, Type::getInt32Ty(ctx), false,
     GlobalValue::ExternalLinkage, BuilderInit.getInt32(0), "depth");
 
   for (auto &F : M) {
     if (F.empty()) continue;
-
     errs() << F.getName() << "\n";
 
-    const void * address = static_cast<const void*>(&F);
-    std::stringstream ss;
-    ss << address;
-    std::string addrStr = ss.str();
-
-    // utils
-    Value *One = ConstantInt::get(Type::getInt32Ty(ctx), 1);
     IRBuilder<> BuilderStart(&F.getEntryBlock().front());
-
     Value *LoadDepth = BuilderStart.CreateLoad(Type::getInt32Ty(ctx), depth);
 
     const std::string message = "%*s%s: %p\n";
@@ -65,6 +47,7 @@ bool LabPass::runOnModule(Module &M) {
     Constant *funcAddr = ConstantExpr::getBitCast(&F, Type::getInt8PtrTy(ctx));
     BuilderStart.CreateCall(printfCallee, { depthMsg, LoadDepth, space, funcName, funcAddr });
 
+    Value *One = ConstantInt::get(Type::getInt32Ty(ctx), 1);
     Value *AddVal = BuilderStart.CreateAdd(One, LoadDepth);
     StoreInst *Store = BuilderStart.CreateStore(AddVal, depth);
 
