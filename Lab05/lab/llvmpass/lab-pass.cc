@@ -58,10 +58,12 @@ bool LabPass::runOnModule(Module &M) {
 
     Value *LoadDepth = BuilderStart.CreateLoad(Type::getInt32Ty(ctx), depth);
 
-    const std::string message = "%*s" +  F.getName().str() + ": " + addrStr + "\n";
+    const std::string message = "%*s%s: %p\n";
     Constant *space = getI8StrVal(M, "", "space");
     Constant *depthMsg = getI8StrVal(M, message.c_str(), "depthMsg");
-    BuilderStart.CreateCall(printfCallee, { depthMsg, LoadDepth, space });
+    Constant *funcName = getI8StrVal(M, std::string(F.getName()).c_str(), "functionName");
+    Constant *funcAddr = ConstantExpr::getBitCast(&F, Type::getInt8PtrTy(ctx));
+    BuilderStart.CreateCall(printfCallee, { depthMsg, LoadDepth, space, funcName, funcAddr });
 
     Value *AddVal = BuilderStart.CreateAdd(One, LoadDepth);
     StoreInst *Store = BuilderStart.CreateStore(AddVal, depth);
@@ -80,7 +82,7 @@ static FunctionCallee printfPrototype(Module &M) {
 
   FunctionType *printfType = FunctionType::get(
     Type::getInt32Ty(ctx),
-    { Type::getInt8PtrTy(ctx), Type::getInt32Ty(ctx), Type::getInt8PtrTy(ctx)},
+    { Type::getInt8PtrTy(ctx), Type::getInt32Ty(ctx), Type::getInt8PtrTy(ctx), Type::getInt8PtrTy(ctx), Type::getInt8PtrTy(ctx)},
     true);
 
   FunctionCallee printfCallee = M.getOrInsertFunction("printf", printfType);
