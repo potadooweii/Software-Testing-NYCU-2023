@@ -110,10 +110,10 @@ class CSSTest(unittest.TestCase):
             for bad_course in bad_courses:
                 ret = css.add_course(bad_course)
                 self.assertFalse(ret)
-                
 
             css.remove_course(course)
-            self.assertFalse(css.remove_course(course))
+            ret = css.remove_course(course)
+            self.assertFalse(ret)
 
 
 
