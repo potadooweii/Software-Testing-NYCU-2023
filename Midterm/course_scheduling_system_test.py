@@ -80,15 +80,18 @@ class CSSTest(unittest.TestCase):
         with self.subTest():
             course1 = ('ST', 'Monday', 1, 2)
             course2 = ('DL', 'Tuesday', 1, 2)
+            course3 = ('ML', 'Friday', 3, 4)
 
             css.add_course(course1)
             css.add_course(course2)
+            css.add_course(course3)
             css.remove_course(course2)
 
             ret = css.get_course_list()
-            self.assertEqual(len(ret), 1)
+            self.assertEqual(len(ret), 2)
             self.assertEqual(ret[0], course1)
-            self.assertEqual(mock_check_course_exist.call_count, 3)
+            self.assertEqual(ret[1], course3)
+            self.assertEqual(mock_check_course_exist.call_count, 4)
 
             print('')
             print(css)
