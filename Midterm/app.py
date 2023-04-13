@@ -31,7 +31,7 @@ try:
     ele = Select(ele.find_element(By.ID, "language_select"))
     ele.select_by_value('zh-tw')
 finally:
-    driver.implicitly_wait(5)
+    driver.implicitly_wait(TIMEOUT)
     first_paragraph = driver.find_element(By.XPATH, '//*[@id="the-python-tutorial"]/p[1]').text
     print(first_paragraph)
 
