@@ -11,7 +11,7 @@ $ make
 $ sudo make install
 ```
 
-### Build & fuzz with AFL
+## Build & fuzz with AFL
 ```
 $ cd Lab07
 $ export CC=~/AFL/afl-gcc
