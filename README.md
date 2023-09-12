@@ -1,19 +1,27 @@
-# 311551035-ST-2023
-2023 Spring NYCU Software Testing, lectured by Professor Shih-Kun Huang.  
-311551035 董柏葳  
+# 2023 Spring NYCU Software Testing
+> lectured by Professor Shih-Kun Huang  
+  
+* Lab 1: unit test & coverage  
+![Lab01](https://github.com/potadooweii/311551035-ST-2023/actions/workflows/Lab01-CI.yml/badge.svg)   
+  
+* Lab 2: stub & mock & spy  
+![Lab02](https://github.com/potadooweii/311551035-ST-2023/actions/workflows/Lab02-CI.yml/badge.svg)   
+  
+* Lab 3: subtests & test-case design  
+![Lab03](https://github.com/potadooweii/311551035-ST-2023/actions/workflows/Lab03-CI.yml/badge.svg)   
 
-![example workflow](https://github.com/potadooweii/311551035-ST-2023/actions/workflows/Lab0-CI.yml/badge.svg)
+* Lab 4: selenium  
+![Lab04](https://github.com/potadooweii/311551035-ST-2023/actions/workflows/Lab04-CI.yml/badge.svg)   
 
-![example workflow](https://github.com/potadooweii/311551035-ST-2023/actions/workflows/Lab01-CI.yml/badge.svg)   
+* Lab 5: LLVM Pass  
+![Lab05](https://github.com/potadooweii/311551035-ST-2023/actions/workflows/Lab05-CI.yml/badge.svg)   
 
-![example workflow](https://github.com/potadooweii/311551035-ST-2023/actions/workflows/Lab02-CI.yml/badge.svg)   
+* Midterm  
+![midterm](https://github.com/potadooweii/311551035-ST-2023/actions/workflows/Midterm-CI.yml/badge.svg)   
+  
+* Lab 6: Valgrind & AddressSanitizer  
 
-![example workflow](https://github.com/potadooweii/311551035-ST-2023/actions/workflows/Lab03-CI.yml/badge.svg)   
+* Lab 7: Fuzzing & AFL  
 
-![example workflow](https://github.com/potadooweii/311551035-ST-2023/actions/workflows/Lab04-CI.yml/badge.svg)   
-
-![example workflow](https://github.com/potadooweii/311551035-ST-2023/actions/workflows/Lab05-CI.yml/badge.svg)   
-
-![example workflow](https://github.com/potadooweii/311551035-ST-2023/actions/workflows/Midterm-CI.yml/badge.svg)   
-
-![example workflow](https://github.com/potadooweii/311551035-ST-2023/actions/workflows/Lab08-CI.yml/badge.svg)   
+* Lab 8: Binary analysis & Angr  
+![Lab08](https://github.com/potadooweii/311551035-ST-2023/actions/workflows/Lab08-CI.yml/badge.svg)   
